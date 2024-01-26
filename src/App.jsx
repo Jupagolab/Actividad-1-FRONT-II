@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <header className='justify-center bg-morado-500 p-6 w-full h-28'>
-        <a href='./index.html' className="logo bg-morado-700 rounded-xl h-9/12 py-2.5 px-5">
+        <a href='/' className="logo bg-morado-700 rounded-xl h-9/12 py-2.5 px-5">
           <h1>Zapateria La 0800</h1>
         </a>
       </header>
@@ -72,7 +72,7 @@ function App() {
                   <td>Azul</td>
                   <td>100</td>
                   <td>30$</td>
-                  <td>A</td>
+                  <td>E</td>
                   <td>X</td>
                 </tr>
               </tbody>
@@ -85,7 +85,7 @@ function App() {
         <div className='grid grid-cols-1 gap-6'>
           <p>Forma Parte de Zapateria La 0800</p>
           <p>la0800@correoFicticio.com</p>
-          <div className='inline-flex gap-2'>
+          <div className='mx-auto flex gap-4'>
             <img src="/vite.svg" alt="icono" />
             <img src="/vite.svg" alt="icono" />
             <img src="/vite.svg" alt="icono" />
