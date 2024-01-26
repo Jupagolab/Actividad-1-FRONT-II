@@ -1,0 +1,34 @@
+{
+    "tienda": "Zapatería XYZ",
+    "inventario": [
+      {
+        "id": 1,
+        "modelo": "Zapato casual",
+        "marca": "Marca A",
+        "talla": 42,
+        "color": "Negro",
+        "cantidad_disponible": 50,
+        "precio_unitario": 39.99,
+        "imagen": "https://i.ebayimg.com/images/g/xOgAAOSwlCtjHHqD/s-l1200.webp"
+      },
+      {
+        "id": 2,
+        "modelo": "Zapato deportivo",
+        "marca": "Marca B",
+        "talla": 38,
+        "color": "Blanco",
+        "cantidad_disponible": 30,
+        "precio_unitario": 49.99
+      },
+      {
+        "id": 3,
+        "modelo": "Botas de cuero",
+        "marca": "Marca C",
+        "talla": 40,
+        "color": "Café",
+        "cantidad_disponible": 20,
+        "precio_unitario": 79.99
+      }
+    ]
+  }
+  
