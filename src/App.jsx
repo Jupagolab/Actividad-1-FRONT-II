@@ -10,7 +10,7 @@ function App() {
           <h1>Zapateria La 0800</h1>
         </a>
       </header>
-      <main className='mx-auto justify-center align-middle bg-morado-900 h-full p-9'>
+      <main className='mx-auto justify-center align-middle bg-morado-900 h-full p-14'>
         <div>
           <h2 className='text-morado-300 my-6'>¡Bienvenido a La 0800!</h2>
 
@@ -63,7 +63,7 @@ function App() {
                   <th></th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className='bg-morado-700 p-6'>
                 <tr>
                   <td>1</td>
                   <td>Nike</td>
