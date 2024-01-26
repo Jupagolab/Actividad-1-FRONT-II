@@ -48,10 +48,10 @@ function App() {
         { /*               LISTA DE ZAPATOS               */ }
         <div>
           <h2 className='text-morado-300 my-6'>Lista de Zapatos</h2>
-          <div className='flex mx-auto justify-center align-middle bg-morado-800 rounded-md p-9'>
-            <table className='w-full lh text-morado-300'>
+          <div className='flex mx-auto justify-center align-middle bg-morado-800 rounded-md p-9 flex-col gap-12'>
+            <table className='min-w-full text-morado-300'>
               <thead>
-                <tr>
+                <tr className='p-6'>
                   <th>ID</th>
                   <th>Marca</th>
                   <th>Modelo</th>
@@ -59,12 +59,12 @@ function App() {
                   <th>Color</th>
                   <th>Cantidad</th>
                   <th>Precio</th>
-                  <th></th>
-                  <th></th>
+                  <th className='w-1/12'></th>
+                  <th className='w-1/12'></th>
                 </tr>
               </thead>
-              <tbody className='bg-morado-700 p-6'>
-                <tr>
+              <tbody className='bg-morado-700 m-12'>
+                <tr className='p-12'>
                   <td>1</td>
                   <td>Nike</td>
                   <td>Jordan</td>
@@ -77,6 +77,9 @@ function App() {
                 </tr>
               </tbody>
             </table>
+            <div>
+              <button className='bg-morado-700 rounded-xl px-10'>Agregar</button>
+            </div>
           </div>
         </div>
 
