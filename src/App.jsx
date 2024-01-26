@@ -52,28 +52,28 @@ function App() {
             <table className='min-w-full text-morado-300'>
               <thead>
                 <tr className='p-6'>
-                  <th>ID</th>
-                  <th>Marca</th>
-                  <th>Modelo</th>
-                  <th>Talla</th>
-                  <th>Color</th>
-                  <th>Cantidad</th>
-                  <th>Precio</th>
+                  <th className="px-9 py-2">ID</th>
+                  <th className="px-9 py-2">Marca</th>
+                  <th className="px-9 py-2">Modelo</th>
+                  <th className="px-9 py-2">Talla</th>
+                  <th className="px-9 py-2">Color</th>
+                  <th className="px-9 py-2">Cantidad</th>
+                  <th className="px-9 py-2">Precio</th>
                   <th className='w-1/12'></th>
                   <th className='w-1/12'></th>
                 </tr>
               </thead>
-              <tbody className='bg-morado-700 m-12'>
-                <tr className='p-12'>
-                  <td>1</td>
-                  <td>Nike</td>
-                  <td>Jordan</td>
-                  <td>42</td>
-                  <td>Azul</td>
-                  <td>100</td>
-                  <td>30$</td>
-                  <td>E</td>
-                  <td>X</td>
+              <tbody className='bg-morado-700 m-12 rounded-xl'>
+                <tr>
+                  <td className="px-9 py-2">1</td>
+                  <td className="px-9 py-2">Nike</td>
+                  <td className="px-9 py-2">Jordan</td>
+                  <td className="px-9 py-2">42</td>
+                  <td className="px-9 py-2">Azul</td>
+                  <td className="px-9 py-2">100</td>
+                  <td className="px-9 py-2">30$</td>
+                  <td className="px-9 py-2">E</td>
+                  <td className="px-9 py-2">X</td>
                 </tr>
               </tbody>
             </table>
