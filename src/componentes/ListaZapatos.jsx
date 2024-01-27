@@ -1,4 +1,3 @@
-// ListaZapatos.js
 import { useState, useEffect } from "react";
 import Modal from "./Modal";
 import AlertModal from "./AlertModal";
@@ -7,6 +6,7 @@ const ListaZapatos = () => {
   const [modalAbierto, setModalAbierto] = useState(false);
   const [zapatos, setZapatos] = useState([]);
   const [alerta, setAlerta] = useState(null);
+  const [zapatoSeleccionado, setZapatoSeleccionado] = useState(null);
 
   useEffect(() => {
     const storedZapatos = JSON.parse(localStorage.getItem("zapatos")) || [];
@@ -18,8 +18,19 @@ const ListaZapatos = () => {
   };
 
   const agregarZapatos = (nuevoZapato) => {
-    setZapatos((prevZapatos) => [...prevZapatos, nuevoZapato]);
-    mostrarAlerta("Zapato agregado correctamente");
+    if (zapatoSeleccionado) {
+      // Si hay un zapato seleccionado, es una edición
+      const nuevosZapatos = zapatos.map((zapato) =>
+        zapato.id === zapatoSeleccionado.id ? nuevoZapato : zapato
+      );
+      setZapatos(nuevosZapatos);
+      setZapatoSeleccionado(null);
+      mostrarAlerta("Zapato editado correctamente");
+    } else {
+      // Si no hay un zapato seleccionado, es una adición
+      setZapatos((prevZapatos) => [...prevZapatos, nuevoZapato]);
+      mostrarAlerta("Zapato agregado correctamente");
+    }
   };
 
   const eliminarZapatos = (index) => {
@@ -33,7 +44,7 @@ const ListaZapatos = () => {
     setAlerta(mensaje);
     setTimeout(() => {
       setAlerta(null);
-    }, 3000);
+    }, 3000); // Cerrar la alerta después de 3 segundos
   };
 
   useEffect(() => {
@@ -70,19 +81,24 @@ const ListaZapatos = () => {
                 <td className="px-9 py-2">
                   <button onClick={() => eliminarZapatos(index)}>Eliminar</button>
                 </td>
-                <td className="px-9 py-2">X</td>
+                <td className="px-9 py-2">
+                  <button onClick={() => { setZapatoSeleccionado(zapato); mostrarModal(); }}>Editar</button>
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
         <div>
-          <button onClick={mostrarModal} className='bg-morado-700 rounded-xl px-10'>Agregar</button>
+          <button onClick={mostrarModal} className='bg-morado-700 rounded-xl px-10'>
+            Agregar
+          </button>
         </div>
       </div>
-      <Modal 
+      <Modal
         abierto={modalAbierto}
         cerrar={mostrarModal}
         agregarZapatos={agregarZapatos}
+        zapatoSeleccionado={zapatoSeleccionado}
       />
 
       {alerta && <AlertModal message={alerta} onClose={() => setAlerta(null)} />}
@@ -91,3 +107,5 @@ const ListaZapatos = () => {
 }
 
 export default ListaZapatos;
+
+
