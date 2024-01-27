@@ -1,9 +1,12 @@
+// ListaZapatos.js
 import { useState, useEffect } from "react";
 import Modal from "./Modal";
+import AlertModal from "./AlertModal";
 
 const ListaZapatos = () => {
   const [modalAbierto, setModalAbierto] = useState(false);
   const [zapatos, setZapatos] = useState([]);
+  const [alerta, setAlerta] = useState(null);
 
   useEffect(() => {
     const storedZapatos = JSON.parse(localStorage.getItem("zapatos")) || [];
@@ -16,12 +19,21 @@ const ListaZapatos = () => {
 
   const agregarZapatos = (nuevoZapato) => {
     setZapatos((prevZapatos) => [...prevZapatos, nuevoZapato]);
+    mostrarAlerta("Zapato agregado correctamente");
   };
 
   const eliminarZapatos = (index) => {
     const updatedZapatos = [...zapatos];
     updatedZapatos.splice(index, 1);
     setZapatos(updatedZapatos);
+    mostrarAlerta("Zapato eliminado correctamente");
+  };
+
+  const mostrarAlerta = (mensaje) => {
+    setAlerta(mensaje);
+    setTimeout(() => {
+      setAlerta(null);
+    }, 3000);
   };
 
   useEffect(() => {
@@ -72,9 +84,10 @@ const ListaZapatos = () => {
         cerrar={mostrarModal}
         agregarZapatos={agregarZapatos}
       />
+
+      {alerta && <AlertModal message={alerta} onClose={() => setAlerta(null)} />}
     </>
   );
 }
 
 export default ListaZapatos;
-
