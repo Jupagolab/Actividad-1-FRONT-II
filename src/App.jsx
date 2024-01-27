@@ -1,5 +1,6 @@
 //import { useState } from 'react'
 import './App.css'
+import ListaZapatos from './componentes/ListaZapatos'
 
 function App() {
 
@@ -48,39 +49,7 @@ function App() {
         { /*               LISTA DE ZAPATOS               */ }
         <div>
           <h2 className='text-morado-300 my-6'>Lista de Zapatos</h2>
-          <div className='flex mx-auto justify-center align-middle bg-morado-800 rounded-md p-9 flex-col gap-12'>
-            <table className='min-w-full text-morado-300'>
-              <thead>
-                <tr className='p-6'>
-                  <th className="px-9 py-2">ID</th>
-                  <th className="px-9 py-2">Marca</th>
-                  <th className="px-9 py-2">Modelo</th>
-                  <th className="px-9 py-2">Talla</th>
-                  <th className="px-9 py-2">Color</th>
-                  <th className="px-9 py-2">Cantidad</th>
-                  <th className="px-9 py-2">Precio</th>
-                  <th className='w-1/12'></th>
-                  <th className='w-1/12'></th>
-                </tr>
-              </thead>
-              <tbody className='bg-morado-700 m-12 rounded-xl'>
-                <tr>
-                  <td className="px-9 py-2">1</td>
-                  <td className="px-9 py-2">Nike</td>
-                  <td className="px-9 py-2">Jordan</td>
-                  <td className="px-9 py-2">42</td>
-                  <td className="px-9 py-2">Azul</td>
-                  <td className="px-9 py-2">100</td>
-                  <td className="px-9 py-2">30$</td>
-                  <td className="px-9 py-2">E</td>
-                  <td className="px-9 py-2">X</td>
-                </tr>
-              </tbody>
-            </table>
-            <div>
-              <button className='bg-morado-700 rounded-xl px-10'>Agregar</button>
-            </div>
-          </div>
+          <ListaZapatos />
         </div>
 
       </main>
