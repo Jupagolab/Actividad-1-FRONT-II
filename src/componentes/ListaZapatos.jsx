@@ -1,12 +1,32 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from "./Modal";
 
 const ListaZapatos = () => {
   const [modalAbierto, setModalAbierto] = useState(false);
+  const [zapatos, setZapatos] = useState([]);
+
+  useEffect(() => {
+    const storedZapatos = JSON.parse(localStorage.getItem("zapatos")) || [];
+    setZapatos(storedZapatos);
+  }, []);
 
   const mostrarModal = () => {
     setModalAbierto(!modalAbierto);
   };
+
+  const agregarZapatos = (nuevoZapato) => {
+    setZapatos((prevZapatos) => [...prevZapatos, nuevoZapato]);
+  };
+
+  const eliminarZapatos = (index) => {
+    const updatedZapatos = [...zapatos];
+    updatedZapatos.splice(index, 1);
+    setZapatos(updatedZapatos);
+  };
+
+  useEffect(() => {
+    localStorage.setItem("zapatos", JSON.stringify(zapatos));
+  }, [zapatos]);
 
   return (
     <>
@@ -26,28 +46,21 @@ const ListaZapatos = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className='bg-morado-700 m-12 rounded-xl border-spacing-y-8'>
-              <td className="px-9 py-2">1</td>
-              <td className="px-9 py-2">Nike</td>
-              <td className="px-9 py-2">Jordan</td>
-              <td className="px-9 py-2">42</td>
-              <td className="px-9 py-2">Azul</td>
-              <td className="px-9 py-2">100</td>
-              <td className="px-9 py-2">30$</td>
-              <td className="px-9 py-2">E</td>
-              <td className="px-9 py-2">X</td>
-            </tr>
-            <tr className='bg-morado-700 m-12 rounded-xl'>
-              <td className="px-9 py-2">1</td>
-              <td className="px-9 py-2">Nike</td>
-              <td className="px-9 py-2">Air Force</td>
-              <td className="px-9 py-2">39</td>
-              <td className="px-9 py-2">Rojo</td>
-              <td className="px-9 py-2">100</td>
-              <td className="px-9 py-2">20$</td>
-              <td className="px-9 py-2">E</td>
-              <td className="px-9 py-2">X</td>
-            </tr>
+            {zapatos.map((zapato, index) => (
+              <tr key={index} className='bg-morado-700 m-12 rounded-xl border-spacing-y-8'>
+                <td className="px-9 py-2">{zapato.id}</td>
+                <td className="px-9 py-2">{zapato.marca}</td>
+                <td className="px-9 py-2">{zapato.modelo}</td>
+                <td className="px-9 py-2">{zapato.talla}</td>
+                <td className="px-9 py-2">{zapato.color}</td>
+                <td className="px-9 py-2">{zapato.cantidad}</td>
+                <td className="px-9 py-2">{zapato.precio}</td>
+                <td className="px-9 py-2">
+                  <button onClick={() => eliminarZapatos(index)}>Eliminar</button>
+                </td>
+                <td className="px-9 py-2">X</td>
+              </tr>
+            ))}
           </tbody>
         </table>
         <div>
@@ -57,9 +70,11 @@ const ListaZapatos = () => {
       <Modal 
         abierto={modalAbierto}
         cerrar={mostrarModal}
+        agregarZapatos={agregarZapatos}
       />
     </>
   );
 }
 
 export default ListaZapatos;
+
