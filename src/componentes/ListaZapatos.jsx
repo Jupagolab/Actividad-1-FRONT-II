@@ -7,6 +7,7 @@ const ListaZapatos = () => {
   const [zapatos, setZapatos] = useState([]);
   const [alerta, setAlerta] = useState(null);
   const [zapatoSeleccionado, setZapatoSeleccionado] = useState(null);
+  const [busqueda, setBusqueda] = useState("");
 
   useEffect(() => {
     const storedZapatos = JSON.parse(localStorage.getItem("zapatos")) || [];
@@ -58,9 +59,25 @@ const ListaZapatos = () => {
     }, 3000); // Cerrar la alerta después de 3 segundos
   };
 
+  // Filtrar los zapatos basados en la búsqueda
+  const zapatosFiltrados = zapatos.filter((zapato) =>
+    Object.values(zapato).some((valor) =>
+      String(valor).toLowerCase().includes(busqueda.toLowerCase())
+    )
+  );
+
   return (
     <>
       <div className='flex flex-wrap mx-auto justify-center align-middle bg-morado-800 rounded-md p-9 flex-col gap-12'>
+        <div className="mb-4">
+          <input
+            type="text"
+            placeholder="Buscar por modelo, marca, etc."
+            value={busqueda}
+            onChange={(e) => setBusqueda(e.target.value)}
+            className="p-2 border border-morado-600 rounded-md"
+          />
+        </div>
         <table className='min-w-full text-morado-300 border-collapse'>
           <thead>
             <tr className='p-6'>
@@ -76,7 +93,7 @@ const ListaZapatos = () => {
             </tr>
           </thead>
           <tbody>
-            {zapatos.map((zapato, index) => (
+            {zapatosFiltrados.map((zapato, index) => (
               <tr key={index} className='bg-morado-700 m-12 rounded-xl'>
                 <td className="px-9 py-2">{zapato.id}</td>
                 <td className="px-9 py-2">{zapato.marca}</td>
@@ -121,8 +138,9 @@ const ListaZapatos = () => {
       {alerta && <AlertModal message={alerta} onClose={() => setAlerta(null)} />}
     </>
   );
-}
+};
 
 export default ListaZapatos;
+
 
 
