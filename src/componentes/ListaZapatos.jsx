@@ -13,13 +13,25 @@ const ListaZapatos = () => {
     setZapatos(storedZapatos);
   }, []);
 
+  useEffect(() => {
+    // Guardar en localStorage antes de cerrar la página o actualizar
+    const handleBeforeUnload = () => {
+      localStorage.setItem("zapatos", JSON.stringify(zapatos));
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [zapatos]);
+
   const mostrarModal = () => {
     setModalAbierto(!modalAbierto);
   };
 
   const agregarZapatos = (nuevoZapato) => {
     if (zapatoSeleccionado) {
-      // Si hay un zapato seleccionado, es una edición
       const nuevosZapatos = zapatos.map((zapato) =>
         zapato.id === zapatoSeleccionado.id ? nuevoZapato : zapato
       );
@@ -27,7 +39,6 @@ const ListaZapatos = () => {
       setZapatoSeleccionado(null);
       mostrarAlerta("Zapato editado correctamente");
     } else {
-      // Si no hay un zapato seleccionado, es una adición
       setZapatos((prevZapatos) => [...prevZapatos, nuevoZapato]);
       mostrarAlerta("Zapato agregado correctamente");
     }
@@ -35,9 +46,9 @@ const ListaZapatos = () => {
 
   const eliminarZapatos = (index) => {
     const updatedZapatos = [...zapatos];
-    updatedZapatos.splice(index, 1);
+    const deletedZapato = updatedZapatos.splice(index, 1)[0];
     setZapatos(updatedZapatos);
-    mostrarAlerta(`Zapato ${zapatos[index].modelo} eliminado correctamente`);
+    mostrarAlerta(`Zapato ${deletedZapato.modelo} eliminado correctamente`);
   };
 
   const mostrarAlerta = (mensaje) => {
@@ -46,10 +57,6 @@ const ListaZapatos = () => {
       setAlerta(null);
     }, 3000); // Cerrar la alerta después de 3 segundos
   };
-
-  useEffect(() => {
-    localStorage.setItem("zapatos", JSON.stringify(zapatos));
-  }, [zapatos]);
 
   return (
     <>
@@ -79,10 +86,20 @@ const ListaZapatos = () => {
                 <td className="px-9 py-2">{zapato.cantidad}</td>
                 <td className="px-9 py-2">{zapato.precio}</td>
                 <td className="relative px-4 py-2">
-                    <img className="cursor-pointer w-7 h-7" src="/pencil.svg" alt="Icono Editar" onClick={() => { setZapatoSeleccionado(zapato); mostrarModal(); }} />
+                  <img
+                    className="cursor-pointer w-7 h-7"
+                    src="/pencil.svg"
+                    alt="Icono Editar"
+                    onClick={() => { setZapatoSeleccionado(zapato); mostrarModal(); }}
+                  />
                 </td>
                 <td className="px-4 py-2">
-                  <img className="cursor-pointer w-7 h-7" src="/x.svg" alt="Icono Eliminar" onClick={() => eliminarZapatos(index)} />
+                  <img
+                    className="cursor-pointer w-7 h-7"
+                    src="/x.svg"
+                    alt="Icono Eliminar"
+                    onClick={() => eliminarZapatos(index)}
+                  />
                 </td>
               </tr>
             ))}
