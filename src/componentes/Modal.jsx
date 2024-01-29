@@ -36,8 +36,7 @@ const Modal = ({ abierto, cerrar, agregarZapatos }) => {
 
   return (
     <>
-      {console.log(abierto)}
-      <div className={`fixed inset-0 bg-morado-300 bg-opacity-75 ${abierto ? '' : 'hidden'}`}>
+      <div className={`fixed inset-0 bg-morado-300 bg-opacity-75 ${abierto ? 'animate-in fade-in duration-300' : 'hidden'}`}>
         <div className="flex items-center justify-center h-screen">
           <div className='bg-morado-700 rounded-md grid grid-cols-2 grid-rows-4 grid-flow-row p-14 shadow'>
             <div className="flex flex-col text-left p-3 gap-2.5">
@@ -53,7 +52,7 @@ const Modal = ({ abierto, cerrar, agregarZapatos }) => {
               />
             </div>
             <div className="flex flex-col text-left p-3 gap-2.5">
-              <h4>Marca</h4>
+              <h4 className="ml-2.5">Marca</h4>
               <input
                 className="bg-morado-700 rounded-sm border-2 border-morado-600 px-2.5 py-1"
                 type="text"
@@ -65,7 +64,7 @@ const Modal = ({ abierto, cerrar, agregarZapatos }) => {
               />
             </div>
             <div className="flex flex-col text-left p-3 gap-2.5">
-              <h4>Modelo</h4>
+              <h4 className="ml-2.5">Modelo</h4>
               <input
                 className="bg-morado-700 rounded-sm border-2 border-morado-600 px-2.5 py-1"
                 type="text"
@@ -77,7 +76,7 @@ const Modal = ({ abierto, cerrar, agregarZapatos }) => {
               />
             </div>
             <div className="flex flex-col text-left p-3 gap-2.5">
-              <h4>Talla</h4>
+              <h4 className="ml-2.5">Talla</h4>
               <input
                 className="bg-morado-700 rounded-sm border-2 border-morado-600 px-2.5 py-1"
                 type="number"
@@ -88,7 +87,7 @@ const Modal = ({ abierto, cerrar, agregarZapatos }) => {
               />
             </div>
             <div className="flex flex-col text-left p-3 gap-2.5">
-              <h4>Color</h4>
+              <h4 className="ml-2.5">Color</h4>
               <input
                 className="bg-morado-700 rounded-sm border-2 border-morado-600 px-2.5 py-1"
                 type="text"
@@ -99,7 +98,7 @@ const Modal = ({ abierto, cerrar, agregarZapatos }) => {
               />
             </div>
             <div className="flex flex-col text-left p-3 gap-2.5">
-              <h4>Cantidad</h4>
+              <h4 className="ml-2.5">Cantidad</h4>
               <input
                 className="bg-morado-700 rounded-sm border-2 border-morado-600 px-2.5 py-1"
                 type="number"
@@ -110,7 +109,7 @@ const Modal = ({ abierto, cerrar, agregarZapatos }) => {
               />
             </div>
             <div className="flex flex-col text-left p-3 gap-2.5">
-              <h4>Precio</h4>
+              <h4 className="ml-2.5">Precio</h4>
               <input
                 className="bg-morado-700 rounded-sm border-2 border-morado-600 px-2.5 py-1"
                 type="text"
@@ -120,8 +119,8 @@ const Modal = ({ abierto, cerrar, agregarZapatos }) => {
                 onChange={handleChange}
               />
             </div>
-            <div className="flex flex-col text-center p-3">
-              <button onClick={handleAgregar}>Agregar</button>
+            <div className="flex items-center justify-center m-auto text-center p-3">
+              <img className="w-1/2 cursor-pointer" src="/check-circle.png" alt="Agregar" onClick={handleAgregar} />
             </div>
             <button onClick={cerrar}>Cerrar</button>
           </div>

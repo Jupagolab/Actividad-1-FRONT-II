@@ -37,7 +37,7 @@ const ListaZapatos = () => {
     const updatedZapatos = [...zapatos];
     updatedZapatos.splice(index, 1);
     setZapatos(updatedZapatos);
-    mostrarAlerta("Zapato eliminado correctamente");
+    mostrarAlerta(`Zapato ${zapatos[index].modelo} eliminado correctamente`);
   };
 
   const mostrarAlerta = (mensaje) => {
@@ -53,7 +53,7 @@ const ListaZapatos = () => {
 
   return (
     <>
-      <div className='flex mx-auto justify-center align-middle bg-morado-800 rounded-md p-9 flex-col gap-12'>
+      <div className='flex flex-wrap mx-auto justify-center align-middle bg-morado-800 rounded-md p-9 flex-col gap-12'>
         <table className='min-w-full text-morado-300 border-collapse'>
           <thead>
             <tr className='p-6'>
@@ -70,19 +70,19 @@ const ListaZapatos = () => {
           </thead>
           <tbody>
             {zapatos.map((zapato, index) => (
-              <tr key={index} className='bg-morado-700 m-12 rounded-xl border-spacing-y-8'>
+              <tr key={index} className='bg-morado-700 m-12 rounded-xl'>
                 <td className="px-9 py-2">{zapato.id}</td>
                 <td className="px-9 py-2">{zapato.marca}</td>
-                <td className="px-9 py-2">{zapato.modelo}</td>
+                <td className="px-9 py-2 w-auto">{zapato.modelo}</td>
                 <td className="px-9 py-2">{zapato.talla}</td>
-                <td className="px-9 py-2">{zapato.color}</td>
+                <td className="px-9 py-2 w-auto">{zapato.color}</td>
                 <td className="px-9 py-2">{zapato.cantidad}</td>
                 <td className="px-9 py-2">{zapato.precio}</td>
-                <td className="px-9 py-2">
-                  <button onClick={() => eliminarZapatos(index)}>Eliminar</button>
+                <td className="relative px-4 py-2">
+                    <img className="cursor-pointer w-7 h-7" src="/pencil.svg" alt="Icono Editar" onClick={() => { setZapatoSeleccionado(zapato); mostrarModal(); }} />
                 </td>
-                <td className="px-9 py-2">
-                  <button onClick={() => { setZapatoSeleccionado(zapato); mostrarModal(); }}>Editar</button>
+                <td className="px-4 py-2">
+                  <img className="cursor-pointer w-7 h-7" src="/x.svg" alt="Icono Eliminar" onClick={() => eliminarZapatos(index)} />
                 </td>
               </tr>
             ))}
