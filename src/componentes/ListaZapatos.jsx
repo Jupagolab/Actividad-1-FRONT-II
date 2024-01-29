@@ -37,10 +37,10 @@ const ListaZapatos = () => {
       );
       setZapatos(nuevosZapatos);
       setZapatoSeleccionado(null);
-      mostrarAlerta("Zapato editado correctamente");
+      mostrarAlerta("Zapato Editado Correctamente");
     } else {
       setZapatos((prevZapatos) => [...prevZapatos, nuevoZapato]);
-      mostrarAlerta("Zapato agregado correctamente");
+      mostrarAlerta("Zapato Agregado Correctamente");
     }
   };
 
@@ -48,7 +48,7 @@ const ListaZapatos = () => {
     const updatedZapatos = [...zapatos];
     const deletedZapato = updatedZapatos.splice(index, 1)[0];
     setZapatos(updatedZapatos);
-    mostrarAlerta(`Zapato ${deletedZapato.modelo} eliminado correctamente`);
+    mostrarAlerta(`Zapato ${deletedZapato.modelo} Eliminado Correctamente`);
   };
 
   const mostrarAlerta = (mensaje) => {
