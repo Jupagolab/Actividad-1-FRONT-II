@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const Modal = ({ abierto, cerrar, agregarZapatos }) => {
+const Modal = ({ abierto, cerrar, agregarZapatos, zapatoSeleccionado }) => {
   const [nuevoZapato, setNuevoZapato] = useState({
     id: "",
     marca: "",
@@ -10,6 +10,13 @@ const Modal = ({ abierto, cerrar, agregarZapatos }) => {
     cantidad: "",
     precio: "",
   });
+
+  //Cuando se edite el zapato del inventario que lo muestre en los campos
+  useEffect(() => {
+    if (zapatoSeleccionado !== null) {
+      setNuevoZapato(zapatoSeleccionado);
+    }
+  }, [zapatoSeleccionado])
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -36,13 +43,13 @@ const Modal = ({ abierto, cerrar, agregarZapatos }) => {
 
   return (
     <>
-      <div className={`fixed inset-0 bg-morado-300 bg-opacity-75 ${abierto ? 'animate-in fade-in duration-300' : 'hidden'}`}>
+      <div className={`fixed inset-0 bg-morado-300 bg-opacity-75 ${abierto ? 'transition-all' : 'hidden'}`}>
         <div className="flex items-center justify-center h-screen">
-          <div className='bg-morado-700 rounded-md grid grid-cols-2 grid-rows-4 grid-flow-row p-9 sm:p-12 md:p-14 lg:p-14 xl:p-16 shadow'>
+          <div className='bg-morado-700 dark:bg-morado-300 rounded-md grid grid-cols-2 grid-rows-4 grid-flow-row p-9 sm:p-12 md:p-14 lg:p-14 xl:p-16 shadow'>
             <div className="flex flex-col text-left p-3 gap-2.5">
               <h4 className="ml-2.5">ID</h4>
               <input
-                className="bg-morado-700 rounded-sm border-2 border-morado-600 px-2.5 py-1"
+                className="bg-morado-700 rounded-sm border-2 border-morado-600 dark:bg-morado-300 dark:border-morado-800 px-2.5 py-1"
                 type="number"
                 name="id"
                 id="id"
@@ -54,7 +61,7 @@ const Modal = ({ abierto, cerrar, agregarZapatos }) => {
             <div className="flex flex-col text-left p-3 gap-2.5">
               <h4 className="ml-2.5">Marca</h4>
               <input
-                className="bg-morado-700 rounded-sm border-2 border-morado-600 px-2.5 py-1"
+                className="bg-morado-700 rounded-sm border-2 border-morado-600 dark:bg-morado-300 dark:border-morado-800 px-2.5 py-1"
                 type="text"
                 name="marca"
                 id="marca"
@@ -66,7 +73,7 @@ const Modal = ({ abierto, cerrar, agregarZapatos }) => {
             <div className="flex flex-col text-left p-3 gap-2.5">
               <h4 className="ml-2.5">Modelo</h4>
               <input
-                className="bg-morado-700 rounded-sm border-2 border-morado-600 px-2.5 py-1"
+                className="bg-morado-700 rounded-sm border-2 border-morado-600 dark:bg-morado-300 dark:border-morado-800 px-2.5 py-1"
                 type="text"
                 name="modelo"
                 id="modelo"
@@ -78,7 +85,7 @@ const Modal = ({ abierto, cerrar, agregarZapatos }) => {
             <div className="flex flex-col text-left p-3 gap-2.5">
               <h4 className="ml-2.5">Talla</h4>
               <input
-                className="bg-morado-700 rounded-sm border-2 border-morado-600 px-2.5 py-1"
+                className="bg-morado-700 rounded-sm border-2 border-morado-600 dark:bg-morado-300 dark:border-morado-800 px-2.5 py-1"
                 type="number"
                 name="talla"
                 id="talla"
@@ -89,7 +96,7 @@ const Modal = ({ abierto, cerrar, agregarZapatos }) => {
             <div className="flex flex-col text-left p-3 gap-2.5">
               <h4 className="ml-2.5">Color</h4>
               <input
-                className="bg-morado-700 rounded-sm border-2 border-morado-600 px-2.5 py-1"
+                className="bg-morado-700 rounded-sm border-2 border-morado-600 dark:bg-morado-300 dark:border-morado-800 px-2.5 py-1"
                 type="text"
                 name="color"
                 id="color"
@@ -100,7 +107,7 @@ const Modal = ({ abierto, cerrar, agregarZapatos }) => {
             <div className="flex flex-col text-left p-3 gap-2.5">
               <h4 className="ml-2.5">Cantidad</h4>
               <input
-                className="bg-morado-700 rounded-sm border-2 border-morado-600 px-2.5 py-1"
+                className="bg-morado-700 rounded-sm border-2 border-morado-600 dark:bg-morado-300 dark:border-morado-800 px-2.5 py-1"
                 type="number"
                 name="cantidad"
                 id="cantidad"
@@ -111,7 +118,7 @@ const Modal = ({ abierto, cerrar, agregarZapatos }) => {
             <div className="flex flex-col text-left p-3 gap-2.5">
               <h4 className="ml-2.5">Precio</h4>
               <input
-                className="bg-morado-700 rounded-sm border-2 border-morado-600 px-2.5 py-1"
+                className="bg-morado-700 rounded-sm border-2 border-morado-600 dark:bg-morado-300 dark:border-morado-800 px-2.5 py-1"
                 type="text"
                 name="precio"
                 id="precio"

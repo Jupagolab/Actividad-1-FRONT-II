@@ -70,7 +70,12 @@ button:focus-visible {
     color: #747bff;
   }
 
-  button {
-    background-color: #f9f9f9;
+  header,
+  footer, 
+  button,
+  input,
+  h4
+  {
+    color: rgba(255, 255, 255, 0.87);
   }
 }

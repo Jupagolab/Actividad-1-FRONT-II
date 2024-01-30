@@ -68,18 +68,18 @@ const ListaZapatos = () => {
 
   return (
     <>
-      <div className='flex flex-wrap mx-auto justify-center items-center box-border bg-morado-800 rounded-md p-4 sm:p-6 md:p-8 lg:9 flex-col gap-12'>
+      <div className='flex flex-wrap mx-auto justify-center items-center box-border bg-morado-800 dark:bg-morado-200 rounded-md p-4 sm:p-6 md:p-8 lg:9 flex-col gap-12'>
         <div className="w-3/5 mb-1 sm:mb-2 md:mb-3 lg:mb-4">
           <input
             type="text"
             placeholder="Buscar por modelo, marca, etc."
             value={busqueda}
             onChange={(e) => setBusqueda(e.target.value)}
-            className="w-full bg-morado-700 p-2 border border-morado-600 rounded-md"
+            className="w-full bg-morado-700 p-2 border border-morado-600 dark:bg-morado-200 rounded-md"
           />
         </div>
         <div className="overflow-x-auto w-full">
-          <table className='min-w-full text-morado-300'>
+          <table className='min-w-full text-morado-300 dark:text-[white]'>
             <thead>
               <tr className='p-6'>
                 <th className="p-sm sm:p-1 lg:px-9 lg:py-2">ID</th>
