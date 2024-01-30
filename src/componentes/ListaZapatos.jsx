@@ -68,60 +68,62 @@ const ListaZapatos = () => {
 
   return (
     <>
-      <div className='flex flex-wrap mx-auto justify-center align-middle bg-morado-800 rounded-md p-9 flex-col gap-12'>
-        <div className="mb-4">
+      <div className='flex flex-wrap mx-auto justify-center items-center box-border bg-morado-800 rounded-md p-4 sm:p-6 md:p-8 lg:9 flex-col gap-12'>
+        <div className="w-3/5 mb-1 sm:mb-2 md:mb-3 lg:mb-4">
           <input
             type="text"
             placeholder="Buscar por modelo, marca, etc."
             value={busqueda}
             onChange={(e) => setBusqueda(e.target.value)}
-            className="p-2 border border-morado-600 rounded-md"
+            className="w-full bg-morado-700 p-2 border border-morado-600 rounded-md"
           />
         </div>
-        <table className='min-w-full text-morado-300 border-collapse'>
-          <thead>
-            <tr className='p-6'>
-              <th className="px-9 py-2">ID</th>
-              <th className="px-9 py-2">Marca</th>
-              <th className="px-9 py-2">Modelo</th>
-              <th className="px-9 py-2">Talla</th>
-              <th className="px-9 py-2">Color</th>
-              <th className="px-9 py-2">Cantidad</th>
-              <th className="px-9 py-2">Precio</th>
-              <th className='w-1/12'></th>
-              <th className='w-1/12'></th>
-            </tr>
-          </thead>
-          <tbody>
-            {zapatosFiltrados.map((zapato, index) => (
-              <tr key={index} className='bg-morado-700 m-12 rounded-xl'>
-                <td className="px-9 py-2">{zapato.id}</td>
-                <td className="px-9 py-2">{zapato.marca}</td>
-                <td className="px-9 py-2 w-auto">{zapato.modelo}</td>
-                <td className="px-9 py-2">{zapato.talla}</td>
-                <td className="px-9 py-2 w-auto">{zapato.color}</td>
-                <td className="px-9 py-2">{zapato.cantidad}</td>
-                <td className="px-9 py-2">{zapato.precio}</td>
-                <td className="relative px-4 py-2">
-                  <img
-                    className="cursor-pointer w-7 h-7"
-                    src="/pencil.svg"
-                    alt="Icono Editar"
-                    onClick={() => { setZapatoSeleccionado(zapato); mostrarModal(); }}
-                  />
-                </td>
-                <td className="px-4 py-2">
-                  <img
-                    className="cursor-pointer w-7 h-7"
-                    src="/x.svg"
-                    alt="Icono Eliminar"
-                    onClick={() => eliminarZapatos(index)}
-                  />
-                </td>
+        <div className="overflow-x-auto w-full">
+          <table className='min-w-full text-morado-300'>
+            <thead>
+              <tr className='p-6'>
+                <th className="p-sm sm:p-1 lg:px-9 lg:py-2">ID</th>
+                <th className="p-sm sm:p-1 lg:px-9 lg:py-2">Marca</th>
+                <th className="p-sm sm:p-1 lg:px-9 lg:py-2">Modelo</th>
+                <th className="p-sm sm:p-1 lg:px-9 lg:py-2">Talla</th>
+                <th className="p-sm sm:p-1 lg:px-9 lg:py-2">Color</th>
+                <th className="p-sm sm:p-1 lg:px-9 lg:py-2">Cantidad</th>
+                <th className="p-sm sm:p-1 lg:px-9 lg:py-2">Precio</th>
+                <th className='botones-tabla sm:w-1/12 lg:w-1/12'></th>
+                <th className='botones-tabla sm:w-1/12 lg:w-1/12'></th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {zapatosFiltrados.map((zapato, index) => (
+                <tr key={index} className='bg-morado-700 m-12 rounded-xl'>
+                  <td className="p-sm sm:p-1 lg:px-9 lg:py-2">{zapato.id}</td>
+                  <td className="p-sm sm:p-1 lg:px-9 lg:py-2">{zapato.marca}</td>
+                  <td className="p-sm sm:p-1 lg:px-9 lg:py-2 w-auto">{zapato.modelo}</td>
+                  <td className="p-sm sm:p-1 lg:px-9 lg:py-2">{zapato.talla}</td>
+                  <td className="p-sm sm:p-1 lg:px-9 lg:py-2 w-auto">{zapato.color}</td>
+                  <td className="p-sm sm:p-1 lg:px-9 lg:py-2">{zapato.cantidad}</td>
+                  <td className="p-sm sm:p-1 lg:px-9 lg:py-2">{zapato.precio}</td>
+                  <td className="p-0 md:p-2 lg:px-4 lg:py-2 xl:p-5">
+                    <img
+                      className="cursor-pointer sm:w-5 sm:h-5 lg:w-6 lg:h-6 xl:w-7 xl:h-7"
+                      src="/pencil.svg"
+                      alt="Icono Editar"
+                      onClick={() => { setZapatoSeleccionado(zapato); mostrarModal(); }}
+                    />
+                  </td>
+                  <td className="p-0 md:p-2 lg:px-4 lg:py-2 xl:p-5">
+                    <img
+                      className="cursor-pointer sm:w-5 sm:h-5 lg:w-6 lg:h-6 xl:w-7 xl:h-7"
+                      src="/x.svg"
+                      alt="Icono Eliminar"
+                      onClick={() => eliminarZapatos(index)}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
         <div>
           <button onClick={mostrarModal} className='bg-morado-700 rounded-xl px-10'>
             Agregar

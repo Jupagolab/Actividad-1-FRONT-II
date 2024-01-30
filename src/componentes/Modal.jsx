@@ -38,7 +38,7 @@ const Modal = ({ abierto, cerrar, agregarZapatos }) => {
     <>
       <div className={`fixed inset-0 bg-morado-300 bg-opacity-75 ${abierto ? 'animate-in fade-in duration-300' : 'hidden'}`}>
         <div className="flex items-center justify-center h-screen">
-          <div className='bg-morado-700 rounded-md grid grid-cols-2 grid-rows-4 grid-flow-row p-14 shadow'>
+          <div className='bg-morado-700 rounded-md grid grid-cols-2 grid-rows-4 grid-flow-row p-9 sm:p-12 md:p-14 lg:p-14 xl:p-16 shadow'>
             <div className="flex flex-col text-left p-3 gap-2.5">
               <h4 className="ml-2.5">ID</h4>
               <input
@@ -120,9 +120,9 @@ const Modal = ({ abierto, cerrar, agregarZapatos }) => {
               />
             </div>
             <div className="flex items-center justify-center m-auto text-center p-3">
-              <img className="w-1/2 cursor-pointer" src="/check-circle.png" alt="Agregar" onClick={handleAgregar} />
+              <img className="w-10 md:w-12 lg:w-14 xl:w-14 cursor-pointer" src="/check-circle.png" alt="Agregar" onClick={handleAgregar} />
+              <img className="w-10 md:w-12 lg:w-14 xl:w-14 cursor-pointer" src="/x-circle.png" alt="Cerrar" onClick={cerrar} />
             </div>
-            <button onClick={cerrar}>Cerrar</button>
           </div>
         </div>
       </div>

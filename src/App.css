@@ -1,22 +1,8 @@
 #root {
   --transition: all 400ms ease;
   max-width: 1280px;
-  margin: 0 auto;
   text-align: center;
 }
-
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/*
-input {
-  border: 1px solid black;
-}
-*/
 
 .logo {
   will-change: filter;
@@ -44,11 +30,33 @@ input {
   }
 }
 
-@media screen and (max-width: 768px) {
-  header{
-    margin: auto;
+@media screen and (max-width: 640px) {
+  img {
+    width: 0.75rem;
+  }
+
+  footer img {
+    width: 1.5rem;
+  }
+
+  .p-sm {
+    padding: 0.125rem;
+  }
+
+  table {
+    font-size: 9px;
+  }
+
+  .ptabla {
+    padding: 1rem;
+
+  }
+
+  .botones-tabla {
+    width: 50%;
   }
 }
+
 
 .card {
   padding: 2em;
